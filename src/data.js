@@ -1,14 +1,28 @@
-const recipes = [{
-  id: 'greek-salad',
-  name: 'Greek Salad',
-  ingredients: ['tomatoes', 'cucumber', 'onion', 'olives', 'feta']
-}, {
-  id: 'hawaiian-pizza',
-  name: 'Hawaiian Pizza',
-  ingredients: ['pizza crust', 'pizza sauce', 'mozzarella', 'ham', 'pineapple']
-}, {
-  id: 'hummus',
-  name: 'Hummus',
-  ingredients: ['chickpeas', 'olive oil', 'garlic cloves', 'lemon', 'tahini']
-}];
-export default recipes;
+import getImageUrl from './user.js';
+
+function Profile({ personInfo }) {
+  return (
+    <>
+      <Header person={personInfo} />
+      <Avatar person={personInfo} />
+    </>
+  );
+}
+
+function Header({ person }) {
+  return(
+    <h1>{person.name}</h1>
+  );
+}
+
+function Avatar({person}){
+  return(
+    <img 
+      className="avatar"
+      src={getImageUrl(person)}
+    >
+    </img>
+  )
+}
+
+export default Profile;

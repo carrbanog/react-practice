@@ -1,35 +1,28 @@
 import { useState } from "react";
 import User from "./user";
 import getImageUrl from "./user";
-import recipes from "./data";
+import Profile from "./data";
 
-function Recipe({ menu }) {
+function App() {
   return (
-    <>
-      {menu.map((e) => (
-        <div key={e.id}>
-          <h3>{e.name}</h3>
-          {e.ingredients.map((e) => (
-            <li key={e}>{e}</li>
-          ))}
-        </div>
-      ))}
-    </>
+    <Toolbar
+      onPlayMovie={() => alert("Playing")}
+      onUploadImage={() => alert("Uploading")}
+    />
   );
 }
 
-function App() {
-  const salad = recipes.filter((e) => e.name === "Greek Salad");
-  const pizza = recipes.filter((e) => e.name === "Hawaiian Pizza");
-  const hummus = recipes.filter((e) => e.name === "Hummus");
+function Toolbar({ onPlayMovie, onUploadImage }) {
   return (
     <div>
-      <h1>Recipes</h1>
-      <Recipe menu={salad} />
-      <Recipe menu={pizza} />
-      <Recipe menu={hummus} />
+      <Button onClick={onPlayMovie}>Play Movie</Button>
+      <Button onClick={onUploadImage}>Upload Image</Button>
     </div>
   );
+}
+
+function Button({ onClick, children }) {
+  return <button event={onClick}>{children}</button>;
 }
 
 export default App;
